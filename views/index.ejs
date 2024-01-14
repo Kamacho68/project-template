@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js EJS Docker App Template</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> 
+</head>
+<body class="container mt-5">
+    <h1 class="mb-4">Form Template</h1>
+    <form id="myForm" action="/submit" method="post" class="custom-form">
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="input1">Input 1:</label>
+                <input type="text" class="form-control" id="input1" name="input1" value="<%= formData.input1 || '' %>" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="input2">Input 2:</label>
+                <input type="text" class="form-control" id="input2" name="input2" value="<%= formData.input2 || '' %>" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="date1">Date 1:</label>
+                <div class="input-group date">
+                    <input type="text" class="form-control datepicker" id="date1" name="date1" value="<%= formData.date1 || '' %>" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="date2">Date 2:</label>
+                <div class="input-group date">
+                    <input type="text" class="form-control datepicker" id="date2" name="date2" value="<%= formData.date2 || '' %>" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-12">
+                <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="responseDiv" class="mt-4">
+        <% if (response) { %>
+            <h2>Server Response:</h2>
+            <div class="alert alert-success">
+                <strong>Success!</strong> <%= response %>
+            </div>
+        <% } %>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        $(document).ready(function () {
+            flatpickr('.datepicker', {
+                dateFormat: 'Y-m-d',
+                // Add any additional configuration options here
+            });
+        });
+    
+        function clearForm() {
+            // Hide response message
+            document.getElementById("responseDiv").innerHTML = '';
+    
+            // Enable the submit button
+            document.getElementById("submitBtn").removeAttribute("disabled");
+    
+            // Manually clear form fields
+            var form = document.getElementById("myForm");
+            var inputs = form.getElementsByTagName('input');
+            
+            for (var i = 0; i < inputs.length; i++) {
+                // Exclude buttons and other input types if needed
+                if (inputs[i].type !== "button" && inputs[i].type !== "submit" && inputs[i].type !== "reset") {
+                    inputs[i].value = "";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
