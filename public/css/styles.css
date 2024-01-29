@@ -1,0 +1,16 @@
+/* Add this CSS to reduce the width of form fields */
+.custom-form {
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Optional: Adjust the width of individual form elements if needed */
+.custom-form .form-control {
+    width: 100%;
+}
+
+.custom-form .datepicker {
+    width: calc(100% - 40px); /* Adjust as needed */
+}
+
+/* Add any additional styling as needed */

@@ -1,0 +1,32 @@
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        $(document).ready(function () {
+            flatpickr('.datepicker', {
+                dateFormat: 'Y-m-d',
+                // Add any additional configuration options here
+            });
+        });
+    
+        function clearForm() {
+            // Hide response message
+            document.getElementById("responseDiv").innerHTML = '';
+    
+            // Enable the submit button
+            document.getElementById("submitBtn").removeAttribute("disabled");
+    
+            // Manually clear form fields
+            var form = document.getElementById("myForm");
+            var inputs = form.getElementsByTagName('input');
+            
+            for (var i = 0; i < inputs.length; i++) {
+                // Exclude buttons and other input types if needed
+                if (inputs[i].type !== "button" && inputs[i].type !== "submit" && inputs[i].type !== "reset") {
+                    inputs[i].value = "";
+                }
+            }
+        }
+    </script>
