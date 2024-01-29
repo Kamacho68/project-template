@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Node.js EJS Docker App Template</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> 
-</head>
-<body class="container mt-5">
-    <h1 class="mb-4">Form Template</h1>
+<h1 class="mb-4">Form Template</h1>
     <form id="myForm" action="/submit" method="post" class="custom-form">
         <div class="form-row">
             <div class="col-md-6 mb-3">
@@ -62,38 +50,3 @@
             </div>
         <% } %>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-    <script>
-        $(document).ready(function () {
-            flatpickr('.datepicker', {
-                dateFormat: 'Y-m-d',
-                // Add any additional configuration options here
-            });
-        });
-    
-        function clearForm() {
-            // Hide response message
-            document.getElementById("responseDiv").innerHTML = '';
-    
-            // Enable the submit button
-            document.getElementById("submitBtn").removeAttribute("disabled");
-    
-            // Manually clear form fields
-            var form = document.getElementById("myForm");
-            var inputs = form.getElementsByTagName('input');
-            
-            for (var i = 0; i < inputs.length; i++) {
-                // Exclude buttons and other input types if needed
-                if (inputs[i].type !== "button" && inputs[i].type !== "submit" && inputs[i].type !== "reset") {
-                    inputs[i].value = "";
-                }
-            }
-        }
-    </script>
-</body>
-</html>
