@@ -29,4 +29,17 @@
                 }
             }
         }
+
+        // Function to handle dropdown selection
+        function handleDropdownSelection() {
+            var selectedOptions = [];
+            var dropdown = document.getElementById('dropdown');
+            for (var i = 0; i < dropdown.options.length; i++) {
+                if (dropdown.options[i].selected) {
+                    selectedOptions.push(dropdown.options[i].value);
+                }
+            }
+            console.log('Selected Options:', selectedOptions);
+            return selectedOptions;
+        }
     </script>

@@ -13,4 +13,13 @@
     width: calc(100% - 40px); /* Adjust as needed */
 }
 
+#dropdownMenuButton {
+    margin-top: 2em;
+}
+.dropdown-checkboxes {
+    margin-top: 10px;
+  }
+  .dropdown-checkboxes .dropdown-item {
+    padding: 5px 20px;
+  }
 /* Add any additional styling as needed */

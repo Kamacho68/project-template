@@ -2,9 +2,40 @@
     <form id="myForm" action="/submit" method="post" class="custom-form">
         <div class="form-row">
             <div class="col-md-6 mb-3">
-                <label for="input1">Input 1:</label>
+                <label for="input1">Bucket Name:</label>
                 <input type="text" class="form-control" id="input1" name="input1" value="<%= formData.input1 || '' %>" required>
             </div>
+
+            <!-- Region selection -->
+
+            <!-- Message Medium -->
+            <!-- <div class="col-md-6 mb-3">
+                <select name="dropdown" id="dropdown" multiple>
+                    <option value="Email">Email</option>
+                    <option value="Push">Push</option>
+                </select>
+            </div> -->
+            <div class="col-md-6 mb-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Choose Message Medium
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <% messageMedium.forEach(function(medium) { %>
+                        <a class="dropdown-item" href="#">
+                          <input type="checkbox" id="<%= medium.value %>" name="messageMedium[]" value="<%= medium.value %>"
+                            <% if (selectedMediumOptions && selectedMediumOptions.includes(medium.value)) { %> checked <% } %>>
+                          <label for="<%= medium.value %>"><%= medium.label %></label>
+                        </a>
+                      <% }); %>
+                  </div>
+            </div>
+            <!-- <div class="dropdown">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+        </div>
+              </div> -->
+            
+            
 
             <div class="col-md-6 mb-3">
                 <label for="input2">Input 2:</label>
@@ -36,7 +67,7 @@
 
         <div class="form-row">
             <div class="col-md-12">
-                <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+                <button type="submit" id="submitBtn" class="btn btn-primary" onclick="handleDropdownSelection()">Submit</button>
                 <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
             </div>
         </div>
